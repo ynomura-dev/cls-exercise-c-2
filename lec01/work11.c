@@ -8,8 +8,7 @@ int main(void) {
     while (1) {
         scanf("%d", &m);
         if (m < 0){
-            printf("%d\n", n);
-            printf("%d\n", total);
+            printf("%d %d\n", n, total);
             break;
             }
         n += m;
