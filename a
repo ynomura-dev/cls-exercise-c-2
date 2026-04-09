@@ -1,0 +1,1 @@
+#gcc -o work11.exe work11.c -Wall
