@@ -1,17 +1,17 @@
 #include <stdio.h>
 
 int main(void) {
-    int n, m, total;
-    scanf("%d", &n);
-    if (n < 0) return 1;
-    total = n;
+    int n;
+    int sum = 0;
+    int product = 1;
+   
     while (1) {
-        scanf("%d", &m);
-        if (m < 0){
-            printf("%d %d\n", n, total);
-            break;
+        scanf("%d", &n);
+        if (n <= 0){
+            printf("%d %d\n", sum, product);
+            return 0;
             }
-        n += m;
-        total *= m;
+        sum += n;
+        product *= n;
     }
 }
