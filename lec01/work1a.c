@@ -11,6 +11,6 @@ int main(int argc, char *argv[]){
             sum += atof(argv[i]);
         }
     }
-    
-    printf("%.3f\n", sum/(argc-1));
+
+    printf("%.3f\n", sum/(argc-1)); 
 }
