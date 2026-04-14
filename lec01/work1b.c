@@ -106,7 +106,7 @@ int main(int argc, char *argv[]){
     int result = 0;
 
     if (argc != 3) {
-        printf("error:expected 2 values.\n");
+        printf("error:expected 2 values.\n");       //文字化け直したら日本語に変える
     } else {
         for (int i = 1; i < argc; i++){             //下の行をシンプルにするために0はじめにしたが、可読性悪いならここと下行を素直に書き直す
             result += pow(-1, i) * priority(argv[i]);
