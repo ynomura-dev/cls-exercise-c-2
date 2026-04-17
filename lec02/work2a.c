@@ -44,7 +44,7 @@ int main(void){
         for(int j = 0; j < WIDTH; j++){
             scanf("%d", &map[i][j]);
         }
-    }
+    }                                   //よく見たらC演習２のウェブサイトにあった。次から確認しよう :(
 
     Point START = {1, 1};
     Point GOAL  = {8, 10};
