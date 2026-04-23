@@ -37,14 +37,19 @@ Point pop(void){
     return gStack[--gSNum];
 }
 
-int main(void){
-    int map[HEIGHT][WIDTH];
-
-    for(int i = 0; i < HEIGHT; i++){
-        for(int j = 0; j < WIDTH; j++){
+void readMap(int map[][WIDTH], int rowsize){
+    int i, j;
+    for (i = 0; i < rowsize; i++){
+        for (j = 0; j < WIDTH; j++){
             scanf("%d", &map[i][j]);
         }
     }
+}
+
+int main(void){
+    int map[HEIGHT][WIDTH];
+
+    readMap(map, HEIGHT);
 
     Point START = {1, 1};
     Point GOAL  = {8, 10};
