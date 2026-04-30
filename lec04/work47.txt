@@ -1,0 +1,5 @@
+work47a: enqueue: 0.000727 秒
+work47a: dequeue: 9.476583 秒
+
+work47b: enqueue: 0.002009 秒
+work47b: dequeue: 0.000670 秒
