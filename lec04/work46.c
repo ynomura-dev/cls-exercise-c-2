@@ -3,46 +3,53 @@
 
 // キューの実装部
 // この部分を教科書を参考に作成する
-#define QUEUE_SIZE 10+1
+#define QUEUE_SIZE (10+1)
 
 typedef int QUEUE_TYPE;
 QUEUE_TYPE queue[QUEUE_SIZE];
 
-int queue_rear = -1;    //今回はインデックスの最後を表すようにしてみた。次入れるとこじゃなくて。こっちだと空が分かりやすい。前回と違うから注意。
+int queue_front = 0;
+int queue_rear = 0;
 
-int isQueueEmpty(void){
-    return queue_rear == -1;
+void errorExit(const char *message){
+    fprintf(stderr, "%s\n", message);
+    exit(1);
 }
 
-int isQueueFull(void){
-    return queue_rear == QUEUE_SIZE - 1;
+int isQueueEmpty(void){ //修正済み
+    return queue_front % QUEUE_SIZE == queue_rear;
 }
 
-void enqueue(QUEUE_TYPE x){
+int isQueueFull(void){ //修正済み
+    return (queue_rear + 1) % QUEUE_SIZE == queue_front;
+}
+
+int next(int i){
+    return (i + 1) % QUEUE_SIZE;
+}
+
+void enqueue(QUEUE_TYPE x){  //修正済み
     if (isQueueFull()) {
         fprintf(stderr, "エラー: キューがフル状態でenqueueはできません\n");
         exit(1);
     }
-    queue[++queue_rear] = x;
+    queue[queue_rear] = x;
+    queue_rear = next(queue_rear);
 }
 
 QUEUE_TYPE dequeue(void){
-    QUEUE_TYPE temp = queue[0];
     if (isQueueEmpty()) {
-        fprintf(stderr, "エラー: キューが空状態でdequeueはできません\n");
-        exit(1);
+        errorExit("エラー: キューが空状態でdequeueはできません");
     }
-    for (int i = 0; i < queue_rear; i++) {
-        queue[i] = queue[i + 1];
-    }
-    queue_rear--;
+    QUEUE_TYPE temp = queue[queue_front];  // 先に値を取る
+    queue_front = next(queue_front);       // その後frontを進める
     return temp;
 }
 
 void printQueue(void){
     int i;
     printf("QUEUE[ ");
-    for (i=0; i<=queue_rear; i++){
+    for (i=queue_front; i!=queue_rear; i=next(i)){
         printf("%d ", queue[i]);
     }
     printf("]\n");
