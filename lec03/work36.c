@@ -75,13 +75,18 @@ int calc(int a, int b, char *op){
     exit(1);
 }
 
+int isStackSingle(void){
+    return gSNum == 1;
+}
+
+
 
 int main(int argc, char *argv[]){
     int i;
 
     for (i = 1; i < argc; i++){
         if (isOperator(argv[i])){
-            if (gSNum < 2){
+            if (argc < 3){
                 fprintf(stderr, "エラー:プログラム引数がありません\n");
                 exit(1);
             }
@@ -100,7 +105,7 @@ int main(int argc, char *argv[]){
     }
 
     // 最後に 1 個だけ残っているはず
-    if (gSNum != 1){
+    if (!isStackSingle()){
         fprintf(stderr, "エラー: 数式が間違っています\n");
         exit(1);
     }
