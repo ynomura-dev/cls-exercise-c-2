@@ -1,0 +1,1 @@
+gcc -finput-charset=UTF-8 -fexec-charset=UTF-8 work5a.c queue.c -o work5a.exe

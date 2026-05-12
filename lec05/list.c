@@ -4,6 +4,11 @@
 #include "list.h"
 
 
+void errorExit(const char *message){
+    fprintf(stderr, "%s\n", message);
+    exit(1);
+}
+
 
 LIST_TYPE list[LIST_SIZE];
 POSITION position;
@@ -131,5 +136,23 @@ int countPositiveMultipleOf3or5(void){
     return count;
 }
 
+void sortedInsert(LIST_TYPE x){
+    if (isListFull()){
+        errorExit("エラー: sortedInsert: フル状態ではリストに挿入できません");
+    }
+
+    int i = 0;
+    for (i = 0; i < position && list[i] < x; i++)
+        ;
+    if (i == position){
+        append(x);
+        printf("append(%d)\t", x);
+        printList();
+    } else {
+        insert(i, x);
+        printf("insert(%d, %d)\t", i, x);
+        printList();
+    }
+}
 
 
