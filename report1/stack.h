@@ -3,7 +3,7 @@
 #include <string.h>
 
 
-typedef float STACK_TYPE;
+typedef char STACK_TYPE;
 #define STACK_SIZE 1000
 
 void push(STACK_TYPE x);
@@ -18,5 +18,4 @@ STACK_TYPE peek(void);
 int isStackSingle(void);
 int hasTwoElements(void);
 int isGreaterThanPeek(STACK_TYPE x);
-int isOperator(char* s);
 STACK_TYPE calc(STACK_TYPE a, STACK_TYPE b, char *op);

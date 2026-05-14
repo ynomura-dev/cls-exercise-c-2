@@ -21,7 +21,7 @@ void printStack(void){
     int i;
     printf("STACK[ ");
     for (i=0; i<gSNum; i++){
-        printf("%f ", gStack[i]);
+        printf("%s ", gStack[i]);
     }
     printf("]\n");
 }
@@ -56,24 +56,4 @@ int isStackSingle(void){
     return gSNum == 1;
 }
 
-int isGreaterThanPeek(STACK_TYPE x){
-    return x > peek();
-}
 
-int isOperator(char* s){
-    return strcmp(s, "+") == 0 || strcmp(s, "-") == 0 || strcmp(s, "*") == 0 || strcmp(s, "/") == 0;
-    }
-
-STACK_TYPE calc(STACK_TYPE a, STACK_TYPE b, char *op){
-    if (strcmp(op, "+") == 0) return a + b;
-    if (strcmp(op, "-") == 0) return a - b;
-    if (strcmp(op, "*") == 0) return a * b;
-    if (strcmp(op, "/") == 0) return a / b;
-
-    errorExit("未知の演算子です:");
-    printf("\t%s", op);
-}
-
-int hasTwoElements(void){
-    return gSNum >= 2;
-}

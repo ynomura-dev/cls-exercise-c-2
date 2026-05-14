@@ -179,7 +179,7 @@ static int enter_core(char *token[], int maxTokenNum){
     if (callcnt++ > 0){
         printf("\n");
     }
-    printf("input> ");
+    printf("enter> ");
     fflush(stdout);
 
 

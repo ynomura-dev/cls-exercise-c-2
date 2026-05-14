@@ -1,11 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
-typedef int QUEUE_TYPE;
 #define QUEUE_SIZE 1000
+typedef char QUEUE_TYPE;
 
-void errorExit(const char *message);
 
 void printQueue(int tabs);
 int isQueueEmpty(void);

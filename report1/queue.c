@@ -4,7 +4,6 @@
 #include "error.h"
 
 
-
 QUEUE_TYPE queue[QUEUE_SIZE];
 int queue_rear = -1;
 
@@ -13,11 +12,10 @@ void printQueue(int tabs){
     for (j = 0; j < tabs; j++){
         printf("\t");
     }
-    printf("QUEUE[ ");
     for (i = 0; i <= queue_rear; i++){
-        printf("%d ", queue[i]);
+        printf("%c ", queue[i]);
     }
-    printf("]\n");
+    printf("\n");
 }
 
 int isQueueEmpty(void){
