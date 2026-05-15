@@ -23,21 +23,21 @@ int isStackFull(void){
 
 void push(STACK_TYPE x){
     if (isStackFull()){
-        errorExit("error: push(): Stack is full\n");
+        errorExit("error: push(): Stack is full");
     }
     gStack[gSNum++] = x;
 }
 
 STACK_TYPE pop(void){
     if (isStackEmpty()){
-        errorExit("error: pop(): Stack is empty\n");
+        errorExit("error: pop(): Stack is empty");
     }
     return gStack[--gSNum];
 }
 
 STACK_TYPE peek(void){
     if (isStackEmpty()){
-        errorExit("error: peek(): stack is empty\n");
+        errorExit("error: peek(): stack is empty");
     }
     return gStack[gSNum - 1];
 }

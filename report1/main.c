@@ -6,22 +6,13 @@
 
 int main(void){
     char *token[MAX_TOKEN_NUM];
-    int numTokens, i;
+    int numTokens;
 
-    numTokens = enter(token, MAX_TOKEN_NUM);    /* tokenに分割結果を格納し、トークン数を返す */
-    while (numTokens > 0){
+    numTokens = enter(token, MAX_TOKEN_NUM);
+    while (numTokens > 0){      // if numTokens <= 0, user requested exit (because of enter function)
         infix_to_rpn(token, numTokens);
-
-        /*debug
-        printQueue(0);
-        printStack();
-        */
-
-        numTokens = enter(token, MAX_TOKEN_NUM);  /* 次の入力 */
+        numTokens = enter(token, MAX_TOKEN_NUM);
     }
     errorExit("User requested exit.");
     return -1;
-
-    
-
 }

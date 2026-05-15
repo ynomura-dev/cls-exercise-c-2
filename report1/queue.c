@@ -11,7 +11,7 @@ int queue_rear = 0;
 
 
 int isQueueEmpty(void){
-    return queue_front % QUEUE_SIZE == queue_rear;
+    return queue_front == queue_rear;
 }
 
 int isQueueFull(void){
@@ -48,4 +48,5 @@ void printQueue(void){
     for (int i=queue_front; i!=queue_rear; i=nextIdx(i)){
         printf("%s ", queue[i]);
     }
+    printf("\n");
 }
