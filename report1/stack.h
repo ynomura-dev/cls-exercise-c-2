@@ -3,7 +3,7 @@
 #include <string.h>
 
 
-typedef char STACK_TYPE;
+typedef char* STACK_TYPE;
 #define STACK_SIZE 1000
 
 void push(STACK_TYPE x);
