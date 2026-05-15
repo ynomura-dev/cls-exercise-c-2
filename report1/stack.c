@@ -5,25 +5,12 @@
 #include "error.h"
 
 
-
-int gSNum = 0;         
 STACK_TYPE gStack[STACK_SIZE];
+int gSNum = 0;
 
-void push(STACK_TYPE x){
-    gStack[gSNum++] = x;
-}
 
-STACK_TYPE pop(void){
-    return gStack[--gSNum];
-}
-
-void printStack(void){
-    int i;
-    printf("STACK[ ");
-    for (i=0; i<gSNum; i++){
-        printf("%s ", gStack[i]);
-    }
-    printf("]\n");
+void initStack(void){
+    gSNum = 0;
 }
 
 int isStackEmpty(void){
@@ -34,26 +21,32 @@ int isStackFull(void){
     return gSNum == STACK_SIZE;
 }
 
-int isEnteredINIT(char* n){
-    return (strcmp(n, "INIT") == 0 ? 1 : 0);
+void push(STACK_TYPE x){
+    if (isStackFull()){
+        errorExit("error: push(): Stack is full\n");
+    }
+    gStack[gSNum++] = x;
 }
 
-
-int initStack(void){
-    gSNum = 0;
-    return 0;
+STACK_TYPE pop(void){
+    if (isStackEmpty()){
+        errorExit("error: pop(): Stack is empty\n");
+    }
+    return gStack[--gSNum];
 }
 
 STACK_TYPE peek(void){
     if (isStackEmpty()){
-        errorExit("エラー: 空状態でpeekはできません\n");
-    } else {
-        return gStack[gSNum - 1];
+        errorExit("error: peek(): stack is empty\n");
     }
+    return gStack[gSNum - 1];
 }
 
-int isStackSingle(void){
-    return gSNum == 1;
+void printStack(void){
+    for (int i=0; i<gSNum; i++){
+        printf("%s ", gStack[i]);
+    }
+    printf("\n");
 }
 
 
