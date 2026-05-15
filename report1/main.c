@@ -1,7 +1,7 @@
 #include "error.h"
 #include "lib1.h"
 #include "infix_to_rpn.h"
-
+#include "calc_rpn.h"
 #define MAX_TOKEN_NUM 100
 
 int main(void){
@@ -11,6 +11,7 @@ int main(void){
     numTokens = enter(token, MAX_TOKEN_NUM);
     while (numTokens > 0){      // if numTokens <= 0, user requested exit (because of enter function)
         infix_to_rpn(token, numTokens);
+        calc_rpn();
         numTokens = enter(token, MAX_TOKEN_NUM);
     }
     errorExit("User requested exit.");

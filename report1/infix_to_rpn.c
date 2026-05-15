@@ -24,7 +24,9 @@ void validateInfix(char *token[], int numTokens){
         }
         prev = cur;
     }
-}       //write about this later. I think this is not enough to validate the infix expression. For example, "3 + * 4" can pass this validation.
+    if (prev == NULL || isOperator(prev))
+        errorExit("error: validateInfix(): Invalid expression");
+}      //write about this later. <- did it :)
 
 void infix_to_rpn(char *token[], int numTokens){
     validateInfix(token, numTokens);
@@ -43,7 +45,7 @@ void infix_to_rpn(char *token[], int numTokens){
                 enqueue(pop());
             }
             if (isStackEmpty()){
-                errorExit("error: Paren mismatch");
+                errorExit("error: infix_to_rpn(): Paren mismatch");
             }
             pop();
         } else if (isOperator(cur)){

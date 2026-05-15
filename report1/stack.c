@@ -37,7 +37,7 @@ STACK_TYPE pop(void){
 
 STACK_TYPE peek(void){
     if (isStackEmpty()){
-        errorExit("error: peek(): stack is empty");
+        errorExit("error: peek(): Stack is empty");
     }
     return gStack[gSNum - 1];
 }
