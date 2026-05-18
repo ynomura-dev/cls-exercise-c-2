@@ -36,6 +36,7 @@ void infix_to_rpn(char *token[], int numTokens){
     for (int tokenIdx = 0; tokenIdx < numTokens; tokenIdx++){
         char *cur = token[tokenIdx];
 
+ 
         if (isNumber(cur)){
             enqueue(cur);
         } else if (strcmp(cur, "(") == 0){
@@ -45,7 +46,7 @@ void infix_to_rpn(char *token[], int numTokens){
                 enqueue(pop());
             }
             if (isStackEmpty()){
-                errorExit("error: infix_to_rpn(): Paren mismatch");
+                errorExit("error: infix_to_rpn(): invalid expression: missing '('");
             }
             pop();
         } else if (isOperator(cur)){
@@ -63,8 +64,15 @@ void infix_to_rpn(char *token[], int numTokens){
         }
     }
     while (!isStackEmpty()){
-        enqueue(pop());
+        char *a = pop();
+        
+        if (strcmp(a, "(") == 0){
+            errorExit("error: infix_to_rpn(): invalid expression: missing ')'");
+        } else {
+            enqueue(a);
+        }
     }
     printQueue();
 }
+
 

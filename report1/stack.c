@@ -5,46 +5,46 @@
 #include "error.h"
 
 
-STACK_TYPE gStack[STACK_SIZE];
-int gSNum = 0;
+STACK_TYPE g_stack[STACK_SIZE];
+int g_stack_num = 0;
 
 
 void initStack(void){
-    gSNum = 0;
+    g_stack_num = 0;
 }
 
 int isStackEmpty(void){
-    return gSNum == 0;
+    return g_stack_num == 0;
 }
 
 int isStackFull(void){
-    return gSNum == STACK_SIZE;
+    return g_stack_num == STACK_SIZE;
 }
 
 void push(STACK_TYPE x){
     if (isStackFull()){
         errorExit("error: push(): Stack is full");
     }
-    gStack[gSNum++] = x;
+    g_stack[g_stack_num++] = x;
 }
 
 STACK_TYPE pop(void){
     if (isStackEmpty()){
         errorExit("error: pop(): Stack is empty");
     }
-    return gStack[--gSNum];
+    return g_stack[--g_stack_num];
 }
 
 STACK_TYPE peek(void){
     if (isStackEmpty()){
         errorExit("error: peek(): Stack is empty");
     }
-    return gStack[gSNum - 1];
+    return g_stack[g_stack_num - 1];
 }
 
 void printStack(void){
-    for (int i=0; i<gSNum; i++){
-        printf("%s ", gStack[i]);
+    for (int i=0; i<g_stack_num; i++){
+        printf("%s ", g_stack[i]);
     }
     printf("\n");
 }

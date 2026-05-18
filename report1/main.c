@@ -15,5 +15,5 @@ int main(void){
         numTokens = enter(token, MAX_TOKEN_NUM);
     }
     errorExit("User requested exit.");
-    return -1;
+    return -1;  //Never reaches here
 }
