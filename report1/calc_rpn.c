@@ -42,5 +42,7 @@ void calc_rpn(void){
             errorExit("error: calc_rpn(): invalid token");
         }
     }
-    printf("%f\n", atof(pop()));
+    double result = atof(pop());
+    if (!isStackEmpty()) errorExit("error: calc_rpn(): too many operands");
+    printf("%f\n", result);
 }
