@@ -6,7 +6,7 @@
 #include "calc_rpn.h"
 #define MAX_TOKEN_NUM 100
 
-jmp_buf error_jmp;
+jmp_buf g_error_jmp;
 
 int main(void){
     char *token[MAX_TOKEN_NUM];
@@ -14,7 +14,7 @@ int main(void){
 
     numTokens = enter(token, MAX_TOKEN_NUM);
     while (numTokens > 0){
-        if (setjmp(error_jmp) == 0){
+        if (setjmp(g_error_jmp) == 0){
             infix_to_rpn(token, numTokens);
             calc_rpn();
         } else {

@@ -28,7 +28,7 @@ int nextIdx(int n){
 
 void enqueue(QUEUE_TYPE x){
     if (isQueueFull()) {
-        errorExit("error: enqueue(): Queue is full");
+        raiseError("error: enqueue(): Queue is full");
     }
     g_queue[g_queue_rear] = x;
     g_queue_rear = nextIdx(g_queue_rear);
@@ -36,7 +36,7 @@ void enqueue(QUEUE_TYPE x){
 
 QUEUE_TYPE dequeue(void){
     if (isQueueEmpty()) {
-        errorExit("error: dequeue(): Queue is empty");
+        raiseError("error: dequeue(): Queue is empty");
     }
     QUEUE_TYPE temp = g_queue[g_queue_front];
     g_queue_front = nextIdx(g_queue_front);

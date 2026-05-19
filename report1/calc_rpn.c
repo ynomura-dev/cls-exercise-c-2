@@ -8,7 +8,7 @@
 #include "lib1.h"
 
 void checkDivisor(double b){
-    if (b == 0) errorExit("error: checkDivisor(): Division by zero");
+    if (b == 0) raiseError("error: checkDivisor(): Division by zero");
 }
 
 double calculate(double a,double b, char *op){
@@ -24,7 +24,7 @@ double calculate(double a,double b, char *op){
         return fmod(a, b);
     }
     if (strcmp(op, "^") == 0) return pow(a, b);
-    errorExit("error: calculate(): invalid operator");
+    raiseError("error: calculate(): invalid operator");
     return 0;
 }
 
@@ -39,10 +39,10 @@ void calc_rpn(void){
             double result = calculate(a, b, token);
             push(ftoa(result));
         } else {
-            errorExit("error: calc_rpn(): invalid token");
+            raiseError("error: calc_rpn(): invalid token");
         }
     }
     double result = atof(pop());
-    if (!isStackEmpty()) errorExit("error: calc_rpn(): too many operands");
+    if (!isStackEmpty()) raiseError("error: calc_rpn(): too many operands");
     printf("%f\n", result);
 }

@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <setjmp.h>
 
-extern jmp_buf error_jmp;
+extern jmp_buf g_error_jmp;
 
-void errorExit(const char *message){
+void raiseError(const char *message){
     fprintf(stderr, "%s\n", message);
-    longjmp(error_jmp, 1);
+    longjmp(g_error_jmp, 1);
 }

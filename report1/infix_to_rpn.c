@@ -10,7 +10,7 @@ int priority(char *op){
     if (strcmp(op, "+") == 0 || strcmp(op, "-") == 0) return 1;
     if (strcmp(op, "*") == 0 || strcmp(op, "/") == 0 || strcmp(op, "%") == 0) return 2;
     if (strcmp(op, "^") == 0) return 3;
-    errorExit("error: priority(): invalid operator");
+    raiseError("error: priority(): invalid operator");
     return -1;
 }
 
@@ -20,12 +20,12 @@ void validateInfix(char *token[], int numTokens){
         char *cur = token[i];
         if (isOperator(cur)){
             if (prev == NULL || isOperator(prev) || strcmp(prev, "(") == 0)
-                errorExit("error: validateInfix(): Invalid expression");
+                raiseError("error: validateInfix(): Invalid expression");
         }
         prev = cur;
     }
     if (prev == NULL || isOperator(prev))
-        errorExit("error: validateInfix(): Invalid expression");
+        raiseError("error: validateInfix(): Invalid expression");
 }      //write about this later. <- did it :)
 
 void infix_to_rpn(char *token[], int numTokens){
@@ -46,7 +46,7 @@ void infix_to_rpn(char *token[], int numTokens){
                 enqueue(pop());
             }
             if (isStackEmpty()){
-                errorExit("error: infix_to_rpn(): invalid expression: missing '('");
+                raiseError("error: infix_to_rpn(): invalid expression: missing '('");
             }
             pop();
         } else if (isOperator(cur)){
@@ -60,14 +60,14 @@ void infix_to_rpn(char *token[], int numTokens){
             }
             push(cur);
         } else {
-            errorExit("error: infix_to_rpn(): invalid token");
+            raiseError("error: infix_to_rpn(): invalid token");
         }
     }
     while (!isStackEmpty()){
         char *a = pop();
         
         if (strcmp(a, "(") == 0){
-            errorExit("error: infix_to_rpn(): invalid expression: missing ')'");
+            raiseError("error: infix_to_rpn(): invalid expression: missing ')'");
         } else {
             enqueue(a);
         }
