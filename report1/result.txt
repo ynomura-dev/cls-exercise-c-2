@@ -23,3 +23,20 @@ enter> 6 - 2 / 3 + 1
 enter> 4 * 5 ^ 2
 4 5 2 ^ * 
 100.000000
+
+--1-----------------------
+enter> 5 * 2 % 3
+5 2 * 3 %
+1.000000
+
+--2-----------------------
+enter> ) + 3 2
+error: infix_to_rpn(): invalid expression: missing '('
+An error occurred. Please try again.
+
+enter> 1 2 3
+1 2 3 
+error: calc_rpn(): too many operands
+An error occurred. Please try again.
+
+
