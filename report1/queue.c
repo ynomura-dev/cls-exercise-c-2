@@ -9,42 +9,42 @@ QUEUE_TYPE g_queue[QUEUE_SIZE + 1];
 int g_queue_front = 0;
 int g_queue_rear = 0;
 
-void initQueue(void){   //fixed :)
+void init_queue(void){   //fixed :)
     g_queue_front = 0;
     g_queue_rear = 0;
 }
 
-int isQueueEmpty(void){
+int is_queue_empty(void){
     return g_queue_front == g_queue_rear;
 }
 
-int isQueueFull(void){
+int is_queue_full(void){
     return (g_queue_rear + 1) % QUEUE_SIZE == g_queue_front;
 }
 
-int nextIdx(int n){
-    return (n + 1) % QUEUE_SIZE;
+int next_idx(int i){
+    return (i + 1) % QUEUE_SIZE;
 }
 
 void enqueue(QUEUE_TYPE x){
-    if (isQueueFull()) {
-        raiseError("error: enqueue(): Queue is full");
+    if (is_queue_full()) {
+        raise_error("error: enqueue(): Queue is full");
     }
     g_queue[g_queue_rear] = x;
-    g_queue_rear = nextIdx(g_queue_rear);
+    g_queue_rear = next_idx(g_queue_rear);
 }
 
 QUEUE_TYPE dequeue(void){
-    if (isQueueEmpty()) {
-        raiseError("error: dequeue(): Queue is empty");
+    if (is_queue_empty()) {
+        raise_error("error: dequeue(): Queue is empty");
     }
     QUEUE_TYPE temp = g_queue[g_queue_front];
-    g_queue_front = nextIdx(g_queue_front);
+    g_queue_front = next_idx(g_queue_front);
     return temp;
 }
 
-void printQueue(void){
-    for (int i=g_queue_front; i!=g_queue_rear; i=nextIdx(i)){
+void print_queue(void){
+    for (int i=g_queue_front; i!=g_queue_rear; i=next_idx(i)){
         printf("%s ", g_queue[i]);
     }
     printf("\n");

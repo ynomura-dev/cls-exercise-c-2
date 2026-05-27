@@ -7,8 +7,8 @@
 #include "error.h"
 #include "lib1.h"
 
-void checkDivisor(double b){
-    if (b == 0) raiseError("error: checkDivisor(): Division by zero");
+void check_divisor(double divisor){
+    if (divisor == 0) raise_error("error: check_divisor(): Division by zero");
 }
 
 double calculate(double a,double b, char *op){
@@ -16,20 +16,20 @@ double calculate(double a,double b, char *op){
     if (strcmp(op, "-") == 0) return a - b;
     if (strcmp(op, "*") == 0) return a * b;
     if (strcmp(op, "/") == 0){
-        checkDivisor(b);
+        check_divisor(b);
         return a / b;
     }
     if (strcmp(op, "%") == 0){
-        checkDivisor(b);
+        check_divisor(b);
         return fmod(a, b);
     }
     if (strcmp(op, "^") == 0) return pow(a, b);
-    raiseError("error: calculate(): invalid operator");
-    return 0;
+    raise_error("error: calculate(): invalid operator");
+    return -1;
 }
 
 void calc_rpn(void){
-    while (!isQueueEmpty()){
+    while (!is_queue_empty()){
     char *token = dequeue();
         if (isNumber(token)){
             push(token);
@@ -39,10 +39,11 @@ void calc_rpn(void){
             double result = calculate(a, b, token);
             push(ftoa(result));
         } else {
-            raiseError("error: calc_rpn(): invalid token");
+            raise_error("error: calc_rpn(): invalid token");
         }
     }
     double result = atof(pop());
-    if (!isStackEmpty()) raiseError("error: calc_rpn(): too many operands");
+    // Output-end check: leftover operands mean an invalid expression (pairs with validate_infix()).
+    if (!is_stack_empty()) raise_error("error: calc_rpn(): too many operands");
     printf("%f\n", result);
 }

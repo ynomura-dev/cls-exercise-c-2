@@ -1,1 +1,1 @@
-void infix_to_rpn(char *token[], int numTokens);
+void infix_to_rpn(char *token[], int num_tokens);

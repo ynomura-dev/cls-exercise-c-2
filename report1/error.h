@@ -1,1 +1,1 @@
-void raiseError(const char *message);
+void raise_error(const char *message);

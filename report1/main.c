@@ -10,17 +10,17 @@ jmp_buf g_error_jmp;
 
 int main(void){
     char *token[MAX_TOKEN_NUM];
-    int numTokens;
+    int num_tokens;
 
-    numTokens = enter(token, MAX_TOKEN_NUM);
-    while (numTokens > 0){
+    num_tokens = enter(token, MAX_TOKEN_NUM);
+    while (num_tokens > 0){
         if (setjmp(g_error_jmp) == 0){
-            infix_to_rpn(token, numTokens);
+            infix_to_rpn(token, num_tokens);
             calc_rpn();
         } else {
             fprintf(stderr, "An error occurred. Please try again.\n");
         }
-        numTokens = enter(token, MAX_TOKEN_NUM);
+        num_tokens = enter(token, MAX_TOKEN_NUM);
     }
     fprintf(stderr, "User requested exit.\n");
     return 0;

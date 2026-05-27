@@ -2,10 +2,10 @@
 typedef char* QUEUE_TYPE;
 
 
-void initQueue(void);
-int isQueueEmpty(void);
-int isQueueFull(void);
+void init_queue(void);
+int is_queue_empty(void);
+int is_queue_full(void);
 void enqueue(QUEUE_TYPE x);
 QUEUE_TYPE dequeue(void);
 
-void printQueue(void);
+void print_queue(void);
