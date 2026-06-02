@@ -1,0 +1,4 @@
+3
+P38001 Adam McGrath     21 20 49 21 25 0
+P38002 Adrian Davidson  21 9  37 17 10 4
+P38003 Anthony Rampling 24 8  42 12 16 1
